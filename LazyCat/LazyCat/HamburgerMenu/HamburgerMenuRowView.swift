@@ -21,9 +21,8 @@ struct HamburgerMenuRowView: View {
             Spacer()
         }
         .padding(.leading)
-        .frame(width: 180, height: 44)
+        .frame(width: 200, height: 44)
         .background(isSelected ? .babyPink : .clear)
-        .clipShape(RoundedRectangle(cornerRadius: 10))
     }
 }
 
