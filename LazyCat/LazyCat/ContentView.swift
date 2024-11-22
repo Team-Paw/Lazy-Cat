@@ -9,36 +9,42 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var showMenu = false
+    @State private var showMenu = false
+    @State private var selectedTab = 0
     
     var body: some View {
         NavigationView {
             GeometryReader { geometry in
                 ZStack(alignment: .trailing) {
-                    MainView()
-                        .frame(width: geometry.size.width,
-                               height: geometry.size.height)
-                        .offset(x: self.showMenu ? -geometry.size.width/2 : 0)
-                        .disabled(self.showMenu ? true : false)
-                    if self.showMenu {
-                        HamburgerMenuView()
-                            .frame(width: geometry.size.width/2)
-                            .transition(.move(edge: .trailing))
+                    // 메뉴 옵션
+                    TabView(selection: $selectedTab) {
+                        Text("닉네임 변경")
+                            .tag(0)
+                        Text("비밀번호 변경")
+                            .tag(1)
+                        Text("로그아웃")
+                            .tag(2)
+                        Text("회원탈퇴")
+                            .tag(3)
+                    }
+                    // 햄버거 메뉴
+                    HamburgerMenuView(isShowing: $showMenu, selectedTab: $selectedTab)
+                }
+                .navigationTitle("Home")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar(showMenu ? .hidden : .visible, for: .navigationBar)
+                .toolbar {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button(action: {
+                            showMenu.toggle()
+                        }, label: {
+                            Image(systemName: "line.3.horizontal")
+                                .tint(.dark)
+                        })
                     }
                 }
+                
             }
-            .navigationBarTitle("Side menu", displayMode: .inline)
-            .navigationBarItems(trailing: (
-                Button(action: {
-                    withAnimation {
-                        self.showMenu.toggle()
-                    }
-                }) {
-                    Image(systemName: "line.horizontal.3")
-                        .imageScale(.large)
-                        .foregroundColor(.black)
-                }
-            ))
         }
     }
 }
