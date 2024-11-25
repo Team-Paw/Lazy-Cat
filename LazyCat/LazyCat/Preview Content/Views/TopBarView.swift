@@ -1,25 +1,31 @@
-//
-//  TopBarView.swift
-//  LazyCat
-//
-//  Created by jinlee on 11/4/24.
-//
-
 import SwiftUI
+
+struct ContentView: View {
+    var body: some View {
+        VStack(spacing: 0) {
+            // TopBarView를 상단에 고정
+            TopBarView()
+                .frame(height: 110)
+                .edgesIgnoringSafeArea(.top) // 상단에 딱 맞도록 설정
+            Spacer()
+            
+        }
+    }
+}
 
 // MARK: - TopBarView
 struct TopBarView: View {
     var body: some View {
         HStack {
-            // MARK: - Title Section
             Text("Lazy Cat")
                 .font(.system(size: 24, weight: .bold))
-                .foregroundColor(.black)
-                .padding(.leading, 16)
+                .foregroundColor(Color(red: 80/255, green: 80/255, blue: 80/255))
+                .padding(.leading, 30)
+                .padding(.top, 30)
             
             Spacer()
             
-            // MARK: - Hamburger Menu Icon
+            // Hamburger
             VStack(spacing: 4) {
                 Rectangle()
                     .frame(width: 24, height: 2)
@@ -31,17 +37,18 @@ struct TopBarView: View {
                     .frame(width: 24, height: 2)
                     .foregroundColor(.black)
             }
-            .padding(.trailing, 16)
+            .padding(.trailing, 25)
+            .padding(.top, 30)
         }
         .frame(width: 393, height: 96)
-        .background(Color(white: 0.95)) // Background color for TopBar
+        .background(Color(red: 241/255, green: 241/255, blue: 241/255))
     }
 }
 
 // MARK: - Preview
-struct TopBarView_Previews: PreviewProvider {
+struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        TopBarView()
-            .previewLayout(.sizeThatFits)
+        ContentView()
+            .previewDevice("iPhone 14")
     }
 }

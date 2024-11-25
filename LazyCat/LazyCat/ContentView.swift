@@ -1,24 +1,24 @@
+////
+////  ContentView.swift
+////  LazyCat
+////
+////  Created by 김민지 on 10/31/24.
+////
 //
-//  ContentView.swift
-//  LazyCat
+//import SwiftUI
 //
-//  Created by 김민지 on 10/31/24.
+//struct ContentView: View {
+//    var body: some View {
+//        VStack {
+//            Image(systemName: "globe")
+//                .imageScale(.large)
+//                .foregroundStyle(.tint)
+//            Text("Hello, world!")
+//        }
+//        .padding()
+//    }
+//}
 //
-
-import SwiftUI
-
-struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
-    }
-}
-
-#Preview {
-    ContentView()
-}
+//#Preview {
+//    ContentView()
+//}
