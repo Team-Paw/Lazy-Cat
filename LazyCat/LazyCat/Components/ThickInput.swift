@@ -7,11 +7,12 @@
 import SwiftUI
 
 struct ThickInput: View {
-    @State private var isFocused: Bool = false
-    @State private var text: String = ""
-    
+    var placeholder: String // 플레이스홀더 텍스트
+    @Binding var text: String // 입력된 텍스트
+    @State private var isFocused: Bool = false // 포커스 상태
+
     var body: some View {
-        TextField("input", text: $text, onEditingChanged: { focused in
+        TextField(placeholder, text: $text, onEditingChanged: { focused in
             self.isFocused = focused // 포커스 상태 변경
         })
         .padding(.horizontal, 20) // 텍스트와 양쪽 끝 여백
@@ -24,18 +25,19 @@ struct ThickInput: View {
         )
         .frame(width: 252, height: 57)
         .font(.system(size: 15, weight: .bold))
-        .foregroundColor(Color("dark"))
+        .foregroundColor(Color("dark")) // 텍스트 색상
     }
 }
 
 // MARK: - Preview
 struct ThickInputComponent_Preview: PreviewProvider {
+    @State static var text = "" // Preview용 State
+
     static var previews: some View {
         VStack(spacing: 20) {
-            ThickInput()
+            ThickInput(placeholder: "이름 입력", text: $text)
         }
         .padding()
         .previewLayout(.sizeThatFits)
     }
 }
-

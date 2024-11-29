@@ -1,12 +1,12 @@
 //
-//  ToggleDropdown.swift
+//  Dropdown.swift
 //  LazyCat
 //
 //  Created by jinlee on 11/27/24.
 //
 import SwiftUI
 
-struct ToggleDropdown: View {
+struct Dropdown: View {
     @State private var isExpanded: Bool = false // 드롭다운 열림 상태
     @State  var selectedOption: String  // 기본 선택 옵션
     let options: [String] // 드롭다운 옵션 목록
@@ -70,14 +70,11 @@ struct ToggleDropdown: View {
 }
 
 // MARK: - Preview
-struct ToggleDropdown_Previews: PreviewProvider {
+struct Dropdown_Preview: PreviewProvider {
     static var previews: some View {
         VStack(spacing: 20) {
-            ToggleDropdown(selectedOption:"월" , options: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"])
-            
-            ToggleDropdown(selectedOption:"주", options: ["1주", "2주", "3주", "4주", "5주"])
+            Dropdown(selectedOption:"월" , options: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"])
         }
-        .padding()
         .previewLayout(.sizeThatFits)
     }
 }
