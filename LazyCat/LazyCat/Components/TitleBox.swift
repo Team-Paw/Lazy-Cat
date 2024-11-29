@@ -6,7 +6,7 @@
 //
 import SwiftUI
 
-struct TitleWithSubtitle: View {
+struct TitleBox: View {
     var title: String // 제목
     var subtitle: String // 부제목
     
@@ -27,10 +27,10 @@ struct TitleWithSubtitle: View {
 }
 
 // MARK: - Preview
-struct TitleWithSubtitle_Previews: PreviewProvider {
+struct TitleBox_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            TitleWithSubtitle(
+            TitleBox(
                 title: "월간 사용 비율",
                 subtitle: "날짜를 클릭해 상세 조회해보세요"
             )

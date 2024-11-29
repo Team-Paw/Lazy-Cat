@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct InputFieldComponent: View {
+struct shortInput: View {
     @State private var isFocused: Bool = false // 입력 상태 여부
     @State private var text: String = "" // 입력된 텍스트
     
@@ -31,10 +31,10 @@ struct InputFieldComponent: View {
 }
 
 // MARK: - Preview
-struct InputFieldComponent_Previews: PreviewProvider {
+struct shortInput_Previews: PreviewProvider {
     static var previews: some View {
         VStack(spacing: 20) {
-            InputFieldComponent()
+            shortInput()
         }
         .padding()
         .previewLayout(.sizeThatFits)

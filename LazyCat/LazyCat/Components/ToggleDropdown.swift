@@ -1,5 +1,5 @@
 //
-//  Toggle.swift
+//  ToggleDropdown.swift
 //  LazyCat
 //
 //  Created by jinlee on 11/27/24.

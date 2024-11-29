@@ -6,7 +6,7 @@
 //
 import SwiftUI
 
-struct ThickInputComponent: View {
+struct ThickInput: View {
     @State private var isFocused: Bool = false
     @State private var text: String = ""
     
@@ -32,7 +32,7 @@ struct ThickInputComponent: View {
 struct ThickInputComponent_Preview: PreviewProvider {
     static var previews: some View {
         VStack(spacing: 20) {
-            ThickInputComponent()
+            ThickInput()
         }
         .padding()
         .previewLayout(.sizeThatFits)

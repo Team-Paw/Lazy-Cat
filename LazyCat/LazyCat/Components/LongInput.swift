@@ -6,7 +6,7 @@
 //
 import SwiftUI
 
-struct LongInputComponent: View {
+struct LongInput: View {
     @State private var isFocused: Bool = false // 입력 상태 여부
     @State private var text: String = "" // 입력된 텍스트
     
@@ -32,7 +32,7 @@ struct LongInputComponent: View {
 struct LongInputComponent_Previews: PreviewProvider {
     static var previews: some View {
         VStack(spacing: 20) {
-            LongInputComponent() // Default 상태
+            LongInput() // Default 상태
         }
         .padding()
         .previewLayout(.sizeThatFits)
