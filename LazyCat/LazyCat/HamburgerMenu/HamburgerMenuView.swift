@@ -8,7 +8,6 @@
 import SwiftUI
 struct HamburgerMenuView: View {
     @Binding var isShowing: Bool // 햄버거메뉴 표시 여부
-    @Binding var selectedTab: Int // 선택된 탭의 인덱스 값
     @State private var selectedOption: HamburgerMenuOptionModel? // 현재 선택된 메뉴 옵션
     
     var body: some View {
@@ -30,12 +29,14 @@ struct HamburgerMenuView: View {
                         
                         // 햄버거 메뉴의 모든 옵션 표시 (4개)
                         VStack {
-                            ForEach(HamburgerMenuOptionModel.allCases) {
-                                option in Button(action: {
-                                    onOptionTapped(option)
-                                }, label: {
+                            ForEach(HamburgerMenuOptionModel.allCases) { option in
+                                NavigationLink(destination: getDestinationView(for: option)) {
                                     HamburgerMenuRowView(option: option, selectedOption: $selectedOption)
-                                })
+                                }
+                                .onTapGesture {
+                                    isShowing = false // 메뉴 닫기
+                                    selectedOption = option
+                                }
                             }
                         }
                         Spacer()
@@ -51,15 +52,21 @@ struct HamburgerMenuView: View {
         .animation(.easeInOut, value: isShowing) // 부드럽게
     }
     
-    // 햄버거 메뉴 옵션이 선택 되었을 때 실행되는 함수
-    private func onOptionTapped(_ option: HamburgerMenuOptionModel) {
-        // 변수 값 업데이트
-        selectedOption = option
-        selectedTab = option.rawValue
-        
-        isShowing = false // 햄버거 메뉴 닫음
+    // 햄버거 메뉴 옵션 뷰 반환
+    @ViewBuilder
+    private func getDestinationView(for option: HamburgerMenuOptionModel) -> some View {
+        switch option {
+        case .changeName:
+            ChangeNameView()
+        case .changePassword:
+            ChangePasswordView()
+        case .logout:
+            LogoutView()
+        case .userDelete:
+            UserDeleteView()
+        }
     }
 }
 #Preview {
-    HamburgerMenuView(isShowing: .constant(true), selectedTab: .constant(0))
+    HamburgerMenuView(isShowing: .constant(true))
 }
