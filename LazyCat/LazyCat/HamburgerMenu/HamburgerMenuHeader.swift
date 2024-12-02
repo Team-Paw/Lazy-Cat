@@ -1,5 +1,5 @@
 //
-//  HamburgerMenuHeaderView.swift
+//  HamburgerMenuHeader.swift
 //  LazyCat
 //
 //  Created by 김민지 on 11/22/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HamburgerMenuHeaderView: View {
+struct HamburgerMenuHeader: View {
     var body: some View {
         HStack {
             Image("paw")
@@ -29,5 +29,5 @@ struct HamburgerMenuHeaderView: View {
 }
 
 #Preview {
-    HamburgerMenuHeaderView()
+    HamburgerMenuHeader()
 }

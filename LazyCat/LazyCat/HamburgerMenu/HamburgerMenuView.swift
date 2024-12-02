@@ -25,13 +25,13 @@ struct HamburgerMenuView: View {
                 HStack {
                     Spacer() // 햄버거 메뉴 오른쪽에 배치
                     VStack(spacing: 32){ // spacing은 햄버거 메뉴 내 요소들 간의 간격
-                        HamburgerMenuHeaderView() // 헤더 (발바닥 로고 & 유저네임)
+                        HamburgerMenuHeader() // 헤더 (발바닥 로고 & 유저네임)
                         
                         // 햄버거 메뉴의 모든 옵션 표시 (4개)
                         VStack {
                             ForEach(HamburgerMenuOptionModel.allCases) { option in
                                 NavigationLink(destination: getDestinationView(for: option)) {
-                                    HamburgerMenuRowView(option: option, selectedOption: $selectedOption)
+                                    HamburgerMenuRow(option: option, selectedOption: $selectedOption)
                                 }
                                 .onTapGesture {
                                     isShowing = false // 메뉴 닫기
@@ -57,13 +57,13 @@ struct HamburgerMenuView: View {
     private func getDestinationView(for option: HamburgerMenuOptionModel) -> some View {
         switch option {
         case .changeName:
-            ChangeNameView()
+            ChangeName()
         case .changePassword:
-            ChangePasswordView()
+            ChangePassword()
         case .logout:
-            LogoutView()
+            Logout()
         case .userDelete:
-            UserDeleteView()
+            UserDelete()
         }
     }
 }

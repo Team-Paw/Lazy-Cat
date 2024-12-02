@@ -1,5 +1,5 @@
 //
-//  UserDeleteView.swift
+//  UserDelete.swift
 //  LazyCat
 //
 //  Created by 김민지 on 12/1/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct UserDeleteView: View {
+struct UserDelete: View {
     var body: some View {
         Text("회원 탈퇴 화면")
             .font(.largeTitle)
@@ -17,5 +17,5 @@ struct UserDeleteView: View {
 
 
 #Preview {
-    UserDeleteView()
+    UserDelete()
 }

@@ -1,5 +1,5 @@
 //
-//  LogoutView.swift
+//  Logout.swift
 //  LazyCat
 //
 //  Created by 김민지 on 12/1/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct LogoutView: View {
+struct Logout: View {
     var body: some View {
         Text("로그아웃 화면")
             .font(.largeTitle)
@@ -17,5 +17,5 @@ struct LogoutView: View {
 
 
 #Preview {
-    LogoutView()
+    Logout()
 }
