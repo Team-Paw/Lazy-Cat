@@ -30,13 +30,19 @@ struct HamburgerMenuView: View {
                         // 햄버거 메뉴의 모든 옵션 표시 (4개)
                         VStack {
                             ForEach(HamburgerMenuOptionModel.allCases) { option in
-                                NavigationLink(destination: getDestinationView(for: option)) {
-                                    HamburgerMenuRow(option: option, selectedOption: $selectedOption)
-                                }
-                                .onTapGesture {
-                                    isShowing = false // 메뉴 닫기
-                                    selectedOption = option
-                                }
+                                HamburgerMenuRow(option: option, selectedOption: $selectedOption)
+                                    .onTapGesture {
+                                        selectedOption = option // 선택된 옵션 즉시 업데이트
+                                        
+                                    }
+                                    .background(
+                                        NavigationLink(
+                                            destination: getDestinationView(for: option),
+                                            tag: option,
+                                            selection: $selectedOption
+                                        ) { EmptyView() } // NavigationLink를 숨긴 형태로 추가
+                                            .opacity(0)
+                                    )
                             }
                         }
                         Spacer()
@@ -67,6 +73,9 @@ struct HamburgerMenuView: View {
         }
     }
 }
+
+
+
 #Preview {
     HamburgerMenuView(isShowing: .constant(true))
 }
