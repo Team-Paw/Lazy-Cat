@@ -13,7 +13,7 @@ struct HamburgerMenuHeader: View {
             Image("paw")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 70, height: 70)
+                .frame(width: 50, height: 50)
         }
         .padding(.top, 40)
         HStack {
@@ -24,7 +24,9 @@ struct HamburgerMenuHeader: View {
                 .tint(.dark)
         }
         .padding(.top, 10)
-        Divider()
+        Rectangle() // 구분선
+            .fill(.lightGray) // 색상 지정
+            .frame(height: 2) // 높이를 설정하여 두께 조정
     }
 }
 
