@@ -12,7 +12,6 @@ struct Login: View {
     
     var body: some View {
         VStack(spacing: 20) {
-            // 제목
             VStack(alignment: .leading, spacing: 0) {
                 Text("Lazy Cat")
                     .font(.system(size: 48, weight: .bold))
@@ -51,7 +50,7 @@ struct Login: View {
 }
 
 // MARK: - Preview
-struct LoginView_Previews: PreviewProvider {
+struct Login_Previews: PreviewProvider {
     static var previews: some View {
         Login()
             .previewDevice("iPhone 14")

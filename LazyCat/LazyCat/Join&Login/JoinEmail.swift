@@ -11,10 +11,12 @@ struct JoinEmail: View {
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var confirmPassword: String = ""
-    
+    @State private var showError: Bool = false // 에러 메시지 표시 여부
+    @State private var showLogin: Bool = false // Login 화면 표시 여부
+
     var body: some View {
         VStack(spacing: 20) {
-            
+            // 제목
             VStack(alignment: .leading, spacing: 0) {
                 Text("Lazy Cat")
                     .font(.system(size: 48, weight: .bold))
@@ -37,15 +39,35 @@ struct JoinEmail: View {
                 LongInput(placeholder: "password confirm", text: $confirmPassword)
             }
             
+            // Join 버튼
             MainButton(text: "Join", width: 266, height: 49) {
-                print("Join button clicked")
+                if fieldsAreValid() {
+                    showLogin = true // Login 화면 표시
+                } else {
+                    showError = true // 에러 메시지 표시
+                }
             }
             .padding(.top, 10)
+            
+            // 에러 메시지
+            if showError {
+                Text("모든 필드를 입력해 주세요.")
+                    .font(.system(size: 12))
+                    .foregroundColor(Color.red)
+            }
             
             Spacer()
         }
         .padding(.horizontal, 25)
         .background(Color.white.ignoresSafeArea())
+        .fullScreenCover(isPresented: $showLogin) {
+            Login() // Login 화면
+        }
+    }
+
+    // 모든 필드 유효성 검사
+    private func fieldsAreValid() -> Bool {
+        return !name.isEmpty && !email.isEmpty && !password.isEmpty && !confirmPassword.isEmpty
     }
 }
 
