@@ -25,7 +25,7 @@ struct HamburgerMenuHeader: View {
         }
         .padding(.top, 10)
         Rectangle() // 구분선
-            .fill(Color("gray")) // 색상 지정
+            .fill(Color("Gray")) // 색상 지정
             .frame(height: 2) // 높이를 설정하여 두께 조정
     }
 }
