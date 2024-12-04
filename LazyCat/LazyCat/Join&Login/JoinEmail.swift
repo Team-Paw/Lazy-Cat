@@ -6,7 +6,7 @@
 //
 import SwiftUI
 
-struct JoinView: View {
+struct JoinEmail: View {
     @State private var name: String = ""
     @State private var email: String = ""
     @State private var password: String = ""
@@ -50,9 +50,9 @@ struct JoinView: View {
 }
 
 // MARK: - Preview
-struct JoinView_Previews: PreviewProvider {
+struct JoinEmail_Previews: PreviewProvider {
     static var previews: some View {
-        JoinView()
+        JoinEmail()
             .previewDevice("iPhone 14")
     }
 }
