@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct Join: View {
+    @State private var isLoginActive = false // 네비게이션 상태 관리
+
     var body: some View {
         NavigationStack {
             VStack(spacing: 20) {
@@ -33,10 +35,9 @@ struct Join: View {
                         print("카카오 로그인")
                     }
                     
-                    // 애플 로고만 크기가 다른 관계로 따로 조정
                     MainButton(
                         text: "        Apple 로그인",
-                        imageName: nil, // 이미지 직접 전달로 설정
+                        imageName: nil,
                         width: 266,
                         height: 49
                     ) {
@@ -47,17 +48,16 @@ struct Join: View {
                             Image(systemName: "applelogo")
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 20, height: 20) // 애플 로고 크기 조정
+                                .frame(width: 20, height: 20)
                                 .foregroundColor(Color.black)
                             Spacer()
                         }
-                        .padding(.leading, 75) // 내부 여백 조정
+                        .padding(.leading, 75)
                     )
-                    
-                    NavigationLink(destination: Login()) {
-                        MainButton(text: "email 로그인", imageName: "envelope.fill", width: 266, height: 49) {
-                            print("이메일 로그인")
-                        }
+
+                    // 이메일 로그인 버튼
+                    MainButton(text: "email 로그인", imageName: "envelope.fill", width: 266, height: 49) {
+                        isLoginActive = true // 네비게이션 활성화
                     }
                 }
                 .padding(.top, 20)
@@ -74,10 +74,12 @@ struct Join: View {
             }
             .padding()
             .background(Color.white.ignoresSafeArea())
+            .navigationDestination(isPresented: $isLoginActive) {
+                Login()
+            }
         }
     }
 }
-
 
 // MARK: - Preview
 struct Join_Previews: PreviewProvider {
