@@ -47,7 +47,6 @@ struct HamburgerMenuView: View {
                         }
                         Spacer()
                     }
-                    .padding()
                     .frame(width: 200, alignment: .center)
                     .background(.white)
                 }
