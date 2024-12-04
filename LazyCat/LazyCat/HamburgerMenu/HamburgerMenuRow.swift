@@ -1,5 +1,5 @@
 //
-//  HamburgerMenuRowView.swift
+//  HamburgerMenuRow.swift
 //  LazyCat
 //
 //  Created by 김민지 on 11/22/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HamburgerMenuRowView: View {
+struct HamburgerMenuRow: View {
     let option: HamburgerMenuOptionModel
     @Binding var selectedOption: HamburgerMenuOptionModel?
     private var isSelected: Bool {
@@ -27,6 +27,6 @@ struct HamburgerMenuRowView: View {
 }
 
 #Preview {
-    HamburgerMenuRowView(option: .logout,
+    HamburgerMenuRow(option: .logout,
                          selectedOption: .constant(.logout))
 }
