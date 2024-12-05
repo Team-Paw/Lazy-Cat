@@ -9,7 +9,8 @@ import SwiftUI
 struct Login: View {
     @State private var email: String = ""
     @State private var password: String = ""
-    
+    @State private var errorMessage: String? = nil // 에러 메시지 상태
+
     var body: some View {
         VStack(spacing: 20) {
             VStack(alignment: .leading, spacing: 0) {
@@ -38,14 +39,54 @@ struct Login: View {
             }
             
             MainButton(text: "Login", width: 266, height: 49) {
-                print("Login button clicked")
+                if let error = validateFields() {
+                    errorMessage = error // 에러 메시지 설정
+                } else {
+                    errorMessage = nil
+                    performLogin()
+                }
             }
             .padding(.top, 10)
+            
+            // 에러 메시지
+            if let errorMessage = errorMessage {
+                Text(errorMessage)
+                    .font(.system(size: 12))
+                    .foregroundColor(.red)
+            }
             
             Spacer()
         }
         .padding(.horizontal, 25)
         .background(Color.white.ignoresSafeArea())
+    }
+    
+    // 유효성 검사
+    private func validateFields() -> String? {
+        if email.isEmpty {
+            return "이메일을 입력해 주세요."
+        }
+        if password.isEmpty {
+            return "비밀번호를 입력해 주세요."
+        }
+        if !isValidEmailAndPassword(email: email, password: password) {
+            return "이메일 또는 비밀번호를 잘못 입력했습니다."
+        }
+        return nil
+    }
+
+    // 이메일/비밀번호 유효성 검사
+    private func isValidEmailAndPassword(email: String, password: String) -> Bool {
+        // 예시로 간단한 검증 로직을 사용
+        let validEmail = "test@example.com"
+        let validPassword = "password123"
+        return email == validEmail && password == validPassword
+    }
+
+    // 로그인 수행
+    private func performLogin() {
+        print("로그인 성공! 다음 화면으로 이동합니다.")
+        // 화면 전환 로직 추가
     }
 }
 
