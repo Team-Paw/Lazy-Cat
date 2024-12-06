@@ -15,7 +15,6 @@ struct ContentView: View {
     var body: some View {
         VStack {
             TopBarView()
-            Home() // 홈화면 (임시)
         }
         .onAppear {
             if !hasSeenOnboarding { // 온보딩이 표시된 적이 없으면 (앱에 최초 접속 시)
