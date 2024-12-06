@@ -36,8 +36,8 @@ struct JoinEmail: View {
                 VStack(spacing: 16) {
                     LongInput(placeholder: "name", text: $name)
                     LongInput(placeholder: "email", text: $email)
-                    LongInput(placeholder: "password", text: $password)
-                    LongInput(placeholder: "password confirm", text: $confirmPassword)
+                    SecureInput(placeholder: "password", text: $password)
+                    SecureInput(placeholder: "password confirm", text: $confirmPassword)
                 }
                 
                 // Join 버튼
