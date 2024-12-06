@@ -23,9 +23,10 @@ struct LongInput: View {
             RoundedRectangle(cornerRadius: 10)
                 .stroke(isFocused ? Color("pointPink") : Color.gray, lineWidth: 2) // 포커스에 따른 테두리 색상
         )
-        .foregroundColor(Color("dark")) // 텍스트 색상
+        .foregroundColor(Color("dark"))
         .frame(width: 266, height: 43)
-        .font(.system(size: 15, weight: .regular)) // 폰트 스타일
+        .font(.system(size: 15, weight: .regular))
+        .textInputAutocapitalization(.never) // 자동 대문자화 비활성화
     }
 }
 

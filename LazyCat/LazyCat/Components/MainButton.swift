@@ -8,6 +8,7 @@ import SwiftUI
 
 struct MainButton: View {
     var text: String
+    var imageName: String? = nil
     var width: CGFloat = 266 //(기본값)
     var height: CGFloat = 49
     var action: () -> Void
@@ -15,12 +16,19 @@ struct MainButton: View {
     
     var body: some View {
         Button(action: action) {
-            Text(text)
-                .font(.system(size: 15, weight: .semibold))
-                .foregroundColor(Color("dark"))
-                .frame(width: width, height: height)
-                .background(isPressed ? Color("babyPink") : Color("gray"))
-                .cornerRadius(15)
+            HStack(spacing: 10) {
+                // 이미지가 있을 경우 표시
+                if let imageName = imageName {
+                    Image(systemName: imageName)
+                        .foregroundColor(Color.black)
+                }
+                Text(text)
+                    .font(.system(size: 15, weight: .semibold))
+                    .foregroundColor(Color("dark"))
+            }
+            .frame(width: width, height: height)
+            .background(isPressed ? Color("babyPink") : Color("gray"))
+            .cornerRadius(15)
         }
         .simultaneousGesture(
             DragGesture(minimumDistance: 0)
