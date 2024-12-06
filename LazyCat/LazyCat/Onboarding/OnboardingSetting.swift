@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct OnboardingSetting: View {
+    @AppStorage("hasSeenOnboarding") private var hasSeenOnboarding = false
+    @Binding var showOnboardingSetting: Bool // 부모로부터 전달된 상태 바인딩
 
     var body: some View {
         VStack(spacing: 20) {
@@ -38,8 +40,9 @@ struct OnboardingSetting: View {
             Spacer()
             
             Button(action: {
-//                requestFamilyControlsAuthorization()
-//                hasSeenOnboarding = true // 온보딩 완료 상태 저장
+                // 완료 버튼 클릭 시 모달 닫기
+                showOnboardingSetting = false
+                hasSeenOnboarding = true
             }) {
                 Text("완료")
                     .frame(maxWidth: .infinity)
@@ -55,5 +58,6 @@ struct OnboardingSetting: View {
 }
 
 #Preview {
-    OnboardingSetting()
+    OnboardingSetting(showOnboardingSetting: .constant(true))
 }
+

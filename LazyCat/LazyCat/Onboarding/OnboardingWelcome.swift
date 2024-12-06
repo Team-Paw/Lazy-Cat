@@ -9,9 +9,9 @@ import SwiftUI
 import FamilyControls
 
 struct OnboardingWelcome: View {
-    @AppStorage("hasSeenOnboarding") var hasSeenOnboarding = false
+    @Binding var showOnboardingWelcome: Bool
+    @Binding var showOnboardingSetting: Bool
     @EnvironmentObject var familyViewModel: FamilyViewModel
-    @Binding var showOnboarding: Bool // 모달 닫기 상태를 부모와 연결
 
 
     var body: some View {
@@ -44,7 +44,6 @@ struct OnboardingWelcome: View {
             
             Button(action: {
                 requestFamilyControlsAuthorization()
-                hasSeenOnboarding = true // 온보딩 완료 상태 저장
             }) {
                 Text("허용")
                     .frame(maxWidth: .infinity)
@@ -63,7 +62,8 @@ struct OnboardingWelcome: View {
             do {
                 // Family Controls 권한 요청
                 try await familyViewModel.familyCenter.requestAuthorization(for: .individual)
-                hasSeenOnboarding = true // 온보딩 완료 상태 저장
+                showOnboardingWelcome = false // 첫 번째 모달 닫기
+                showOnboardingSetting = true // 두 번째 모달 표시
             } catch {
                 print("Failed to request FamilyControls authorization: \(error)")
             }
@@ -98,5 +98,10 @@ struct OnboardingItem: View {
 
 
 #Preview {
-    OnboardingWelcome(showOnboarding: .constant(true))
+    OnboardingWelcome(
+        showOnboardingWelcome: .constant(true),
+        showOnboardingSetting: .constant(false)
+    )
+    .environmentObject(FamilyViewModel())
 }
+
