@@ -35,7 +35,7 @@ struct Login: View {
             
             VStack(spacing: 16) {
                 LongInput(placeholder: "email", text: $email)
-                LongInput(placeholder: "password", text: $password)
+                SecureInput(placeholder: "password", text: $password)
             }
             
             MainButton(text: "Login", width: 266, height: 49) {
@@ -75,9 +75,9 @@ struct Login: View {
         return nil
     }
 
-    // 이메일/비밀번호 유효성 검사
+    // 이메일,비밀번호 유효성 검사
     private func isValidEmailAndPassword(email: String, password: String) -> Bool {
-        // 예시로 간단한 검증 로직을 사용
+        //임시계정
         let validEmail = "test@example.com"
         let validPassword = "password123"
         return email == validEmail && password == validPassword
